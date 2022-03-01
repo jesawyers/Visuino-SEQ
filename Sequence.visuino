@@ -25,7 +25,7 @@
       "Name": "__OpenWireRootUnit__",
       "*": [
         {
-          "X": 960,
+          "X": 1152,
           "Name": "Arduino",
           "Instance": {
             "AnalogInput": {
@@ -166,7 +166,7 @@
           "Y": 256
         },
         {
-          "X": 512,
+          "X": 704,
           "Name": "Pls200ms",
           "Instance": {
             "Frequency": 5,
@@ -185,7 +185,7 @@
           "Y": 624
         },
         {
-          "X": 1216,
+          "X": 1408,
           "Name": "DI_00",
           "Instance": {
             "InputPin": {
@@ -207,7 +207,7 @@
           "Y": 800
         },
         {
-          "X": 688,
+          "X": 880,
           "Name": "PACK_DATA",
           "Instance": {
             "ClockInputPin": {
@@ -324,7 +324,7 @@
           "Y": 256
         },
         {
-          "X": 1312,
+          "X": 1504,
           "Name": "GP_BTN",
           "Instance": {
             "InputPin": {
@@ -354,11 +354,11 @@
           "Y": 800
         },
         {
-          "X": 256,
+          "X": 448,
           "Name": "RUDCAL_SEQ",
           "Instance": {
             "+": "TArduinoCustomCode",
-            "OnExecute": "if (_RST)\r\n{\r\n    _SEQ = 0;\r\n    _STEP5 = false;\r\n    _STEP4 = false;\r\n    _STEP3 = false;\r\n    _STEP2 = false;\r\n    _STEP1 = false;\r\n    _STEP0 = true;\r\n}\r\n\r\nif (_STEP && !_LASTSTEP && !_RST) {\r\n\r\n    _LASTSTEP = true;\r\n\r\n    if(_STEP5 && _STEP)\r\n    {\r\n         _SEQ = 0;\r\n         _STEP5 = false;\r\n         _STEP0 = true;\r\n    }\r\n\r\n    if (_STEP4 && _STEP)\r\n    {\r\n        _SEQ = 5;\r\n        _STEP4 = false;\r\n        _STEP5 = true;\r\n    }\r\n\r\n    if (_STEP3 && _STEP)\r\n    {\r\n        _SEQ = 4;\r\n        _STEP3 = false;\r\n        _STEP4 = true;\r\n    }\r\n\r\n    if (_STEP2 && _STEP)\r\n    {\r\n        _SEQ = 3;\r\n        _STEP2 = false;\r\n        _STEP3 = true;\r\n    }\r\n\r\n    if (_STEP1 && _STEP)\r\n    {\r\n        _SEQ = 2;\r\n        _STEP1 = false;\r\n        _STEP2 = true;\r\n    }\r\n\r\n    if(_STEP0 && _STEP)\r\n    {\r\n        _SEQ = 1;\r\n        _STEP0 = false;\r\n        _STEP1 = true;\r\n    }\r\n}\r\n\r\nif (_LASTSTEP && !_STEP)\r\n    _LASTSTEP = false;\r\n\r\nSTEP0.Send(_STEP0);\r\nSTEP1.Send(_STEP1);\r\nSTEP2.Send(_STEP2);\r\nSTEP3.Send(_STEP3);\r\nSTEP4.Send(_STEP4);\r\nSTEP5.Send(_STEP5);\r\n\r\nSEQ.Send(_SEQ);",
+            "OnExecute": "if (_RST)\r\n{\r\n    _SEQ = 0;\r\n    _STEP5 = false;\r\n    _STEP4 = false;\r\n    _STEP3 = false;\r\n    _STEP2 = false;\r\n    _STEP1 = false;\r\n    _STEP0 = true;\r\n}\r\n\r\nif (_STEP && !_LASTSTEP && !_RST) \r\n{\r\n    \r\n    _LASTSTEP = true;\r\n\r\n    switch (_SEQ) {\r\n    \r\n        case 0:\r\n          _SEQ = 1;\r\n         _STEP0 = false;\r\n         _STEP1 = true;\r\n         break;\r\n\r\n        case 1:\r\n          _SEQ = 2;\r\n         _STEP1 = false;\r\n         _STEP2 = true;\r\n         break;\r\n\r\n        case 2:\r\n          _SEQ = 3;\r\n         _STEP2 = false;\r\n         _STEP3 = true;\r\n         break;  \r\n\r\n        case 3:\r\n          _SEQ = 4;\r\n         _STEP3 = false;\r\n         _STEP4 = true;\r\n         break;  \r\n\r\n        case 4:\r\n          _SEQ = 5;\r\n         _STEP4 = false;\r\n         _STEP5 = true;\r\n         break;\r\n\r\n        case 5:\r\n          _SEQ = 0;\r\n         _STEP5 = false;\r\n         _STEP0 = true;\r\n         break;\r\n\r\n    } \/\/ END SWITCH\r\n}\r\n\r\nif (_LASTSTEP && !_STEP)\r\n    _LASTSTEP = false;\r\n\r\n\/\/ Update Outputs\r\n\r\nSTEP0.Send(_STEP0);\r\nSTEP1.Send(_STEP1);\r\nSTEP2.Send(_STEP2);\r\nSTEP3.Send(_STEP3);\r\nSTEP4.Send(_STEP4);\r\nSTEP5.Send(_STEP5);\r\nSEQ.Send(_SEQ);",
             "OnStart": "STEP0.Send(_STEP0);\r\nSTEP1.Send(_STEP1);\r\nSTEP2.Send(_STEP2);\r\nSTEP3.Send(_STEP3);\r\nSTEP4.Send(_STEP4);\r\nSTEP5.Send(_STEP5);\r\n\r\nSEQ.Send(_SEQ);\r\n",
             "Members": "\/\/ Declare Local Variables for Inputs\r\nboolean _STEP;\r\nboolean _RST;\r\n\r\n\/\/Declare Local Variables for Outputs\r\nboolean _STEP0;\r\nboolean _STEP1;\r\nboolean _STEP2;\r\nboolean _STEP3;\r\nboolean _STEP4;\r\nboolean _STEP5;\r\nuint8_t _SEQ;\r\n\r\n\/\/Declare Local Variables\r\n\r\nboolean _LASTSTEP;\r\n",
             "OnInit": "_STEP0 = true;\r\n_STEP1 = false;\r\n_STEP2 = false;\r\n_STEP3 = false;\r\n_STEP4 = false;\r\n_STEP4 = false;\r\n_SEQ   = 0;\r\n\r\n_STEP     = false;\r\n_LASTSTEP = _STEP;\r\n",
@@ -377,7 +377,12 @@
                 {
                   "Name": "RST",
                   "OnData": "_RST = AValue;",
-                  "+": "TArduinoCustomCodeInputDigitalElement"
+                  "+": "TArduinoCustomCodeInputDigitalElement",
+                  "InputPin": {
+                    "SourcePin": {
+                      "ID": "__OpenWireRootUnit__.DELAY_500MS.OutputPin"
+                    }
+                  }
                 }
               ]
             },
@@ -438,6 +443,9 @@
                       {
                         "Name": "__OpenWireRootUnit__.PACK_DATA.Elements.Digital.InputPin",
                         "ID": "__OpenWireRootUnit__.PACK_DATA.Elements._Item5.InputPin"
+                      },
+                      {
+                        "ID": "__OpenWireRootUnit__.DELAY_500MS.InputPin"
                       }
                     ]
                   },
@@ -472,6 +480,31 @@
           },
           "Type": "Component",
           "Y": 288
+        },
+        {
+          "X": 256,
+          "Name": "DELAY_500MS",
+          "Instance": {
+            "InputPin": {
+              "SourcePin": {
+                "Name": "__OpenWireRootUnit__.RUDCAL_SEQ.Outputs.STEP4.OutputPin",
+                "ID": "__OpenWireRootUnit__.RUDCAL_SEQ.Outputs._Item4.OutputPin"
+              }
+            },
+            "OutputPin": {
+              "SinkPins": [
+                {
+                  "Name": "__OpenWireRootUnit__.RUDCAL_SEQ.Inputs.RST.InputPin",
+                  "ID": "__OpenWireRootUnit__.RUDCAL_SEQ.Inputs._Item1.InputPin"
+                }
+              ]
+            },
+            "+": "TArduinoOnOffDelay",
+            "OnInterval": 500000,
+            "OffInterval": 0
+          },
+          "Type": "Component",
+          "Y": 352
         }
       ],
       "Sub Graphs": [
@@ -502,7 +535,7 @@
           ],
           "Type": "Diagram",
           "Selection": [
-            "RUDCAL_SEQ"
+            "DELAY_500MS"
           ]
         },
         {
@@ -528,13 +561,13 @@
           ],
           "Type": "Diagram",
           "Selection": [
-            "RUDCAL_SEQ"
+            "DELAY_500MS"
           ]
         }
       ],
       "Type": "Diagram",
       "Selection": [
-        "RUDCAL_SEQ"
+        "DELAY_500MS"
       ]
     }
   ]
