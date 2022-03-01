@@ -25,7 +25,7 @@
       "Name": "__OpenWireRootUnit__",
       "*": [
         {
-          "X": 1232,
+          "X": 960,
           "Name": "Arduino",
           "Instance": {
             "AnalogInput": {
@@ -57,8 +57,11 @@
             "Modules": {
               "*": [
                 {
+                  "HostName": "",
+                  "+": "TArduinoESP8266WiFiModule",
                   "Time": {
                     "NetworkTime": {
+                      "TimeZoneOffset": 0,
                       "Servers": {
                         "*": [
                           {
@@ -74,7 +77,10 @@
                       }
                     }
                   },
-                  "+": "TArduinoESP8266WiFiModule"
+                  "AccessPoint": {
+                    "SSID": "",
+                    "Password": ""
+                  }
                 },
                 {
                   "Enabled": false,
@@ -157,10 +163,10 @@
             "BoardType": "WeMos D1 Mini"
           },
           "Type": "Component",
-          "Y": 336
+          "Y": 256
         },
         {
-          "X": 784,
+          "X": 512,
           "Name": "Pls200ms",
           "Instance": {
             "Frequency": 5,
@@ -168,19 +174,18 @@
               "SinkPins": [
                 {
                   "ID": "__OpenWireRootUnit__.PACK_DATA.ClockInputPin"
-                },
-                {
-                  "ID": "__OpenWireRootUnit__.RUDCAL_SEQ.ClockInputPin"
                 }
               ]
             },
-            "+": "TArduinoPulseGenerator"
+            "+": "TArduinoPulseGenerator",
+            "Phase": 0,
+            "Asymmetry": 0
           },
           "Type": "Component",
-          "Y": 704
+          "Y": 624
         },
         {
-          "X": 1488,
+          "X": 1216,
           "Name": "DI_00",
           "Instance": {
             "InputPin": {
@@ -199,10 +204,10 @@
             "+": "TArduinoDigitalChangeOnly"
           },
           "Type": "Component",
-          "Y": 880
+          "Y": 800
         },
         {
-          "X": 960,
+          "X": 688,
           "Name": "PACK_DATA",
           "Instance": {
             "ClockInputPin": {
@@ -316,10 +321,10 @@
             }
           },
           "Type": "Component",
-          "Y": 336
+          "Y": 256
         },
         {
-          "X": 1584,
+          "X": 1312,
           "Name": "GP_BTN",
           "Instance": {
             "InputPin": {
@@ -330,39 +335,33 @@
             "OutputPin": {
               "SinkPins": [
                 {
-                  "ID": "__OpenWireRootUnit__.GPBTN_OS.StartInputPin"
-                },
-                {
                   "Name": "__OpenWireRootUnit__.Arduino.Digital[7].DigitalInputPin",
                   "ID": "__OpenWireRootUnit__.Arduino.Digital._Item7.DigitalInputPin"
                 },
                 {
                   "Name": "__OpenWireRootUnit__.PACK_DATA.Elements.Digital.InputPin",
                   "ID": "__OpenWireRootUnit__.PACK_DATA.Elements._Item0.InputPin"
+                },
+                {
+                  "Name": "__OpenWireRootUnit__.RUDCAL_SEQ.Inputs.STEP.InputPin",
+                  "ID": "__OpenWireRootUnit__.RUDCAL_SEQ.Inputs._Item0.InputPin"
                 }
               ]
             },
             "+": "TArduinoButton"
           },
           "Type": "Component",
-          "Y": 880
+          "Y": 800
         },
         {
-          "X": 528,
+          "X": 256,
           "Name": "RUDCAL_SEQ",
           "Instance": {
-            "ClockInputPin": {
-              "SourcePins": [
-                {
-                  "ID": "__OpenWireRootUnit__.Pls200ms.OutputPin"
-                }
-              ]
-            },
             "+": "TArduinoCustomCode",
-            "OnExecute": "\r\nif (_RST)\r\n{\r\n    _SEQ = 0;\r\n    _STEP5 = false;\r\n    _STEP4 = false;\r\n    _STEP3 = false;\r\n    _STEP2 = false;\r\n    _STEP1 = false;\r\n    _STEP0 = true;\r\n}\r\n\r\nif (_STEP4 && _STEP)\r\n{\r\n    _SEQ = 5;\r\n    _STEP4 = false;\r\n    _STEP5 = true;\r\n}\r\n\r\nif (_STEP3 && _STEP)\r\n{\r\n    _SEQ = 4;\r\n    _STEP3 = false;\r\n    _STEP4 = true;\r\n}\r\n\r\nif (_STEP2 && _STEP)\r\n{\r\n    _SEQ = 3;\r\n    _STEP2 = false;\r\n    _STEP3 = true;\r\n}\r\n\r\nif (_STEP1 && _STEP)\r\n{\r\n    _SEQ = 2;\r\n    _STEP1 = false;\r\n    _STEP2 = true;\r\n}\r\n\r\nif(_STEP0 && _STEP)\r\n{\r\n    _SEQ = 1;\r\n    _STEP0 = false;\r\n    _STEP1 = true;\r\n}\r\n\r\nSTEP0.Send(_STEP0);\r\nSTEP1.Send(_STEP1);\r\nSTEP2.Send(_STEP2);\r\nSTEP3.Send(_STEP3);\r\nSTEP4.Send(_STEP4);\r\nSTEP5.Send(_STEP5);\r\n\r\nSEQ.Send(_SEQ);",
+            "OnExecute": "if (_RST)\r\n{\r\n    _SEQ = 0;\r\n    _STEP5 = false;\r\n    _STEP4 = false;\r\n    _STEP3 = false;\r\n    _STEP2 = false;\r\n    _STEP1 = false;\r\n    _STEP0 = true;\r\n}\r\n\r\nif (_STEP && !_LASTSTEP && !_RST) {\r\n\r\n    _LASTSTEP = true;\r\n\r\n    if(_STEP5 && _STEP)\r\n    {\r\n         _SEQ = 0;\r\n         _STEP5 = false;\r\n         _STEP0 = true;\r\n    }\r\n\r\n    if (_STEP4 && _STEP)\r\n    {\r\n        _SEQ = 5;\r\n        _STEP4 = false;\r\n        _STEP5 = true;\r\n    }\r\n\r\n    if (_STEP3 && _STEP)\r\n    {\r\n        _SEQ = 4;\r\n        _STEP3 = false;\r\n        _STEP4 = true;\r\n    }\r\n\r\n    if (_STEP2 && _STEP)\r\n    {\r\n        _SEQ = 3;\r\n        _STEP2 = false;\r\n        _STEP3 = true;\r\n    }\r\n\r\n    if (_STEP1 && _STEP)\r\n    {\r\n        _SEQ = 2;\r\n        _STEP1 = false;\r\n        _STEP2 = true;\r\n    }\r\n\r\n    if(_STEP0 && _STEP)\r\n    {\r\n        _SEQ = 1;\r\n        _STEP0 = false;\r\n        _STEP1 = true;\r\n    }\r\n}\r\n\r\nif (_LASTSTEP && !_STEP)\r\n    _LASTSTEP = false;\r\n\r\nSTEP0.Send(_STEP0);\r\nSTEP1.Send(_STEP1);\r\nSTEP2.Send(_STEP2);\r\nSTEP3.Send(_STEP3);\r\nSTEP4.Send(_STEP4);\r\nSTEP5.Send(_STEP5);\r\n\r\nSEQ.Send(_SEQ);",
             "OnStart": "STEP0.Send(_STEP0);\r\nSTEP1.Send(_STEP1);\r\nSTEP2.Send(_STEP2);\r\nSTEP3.Send(_STEP3);\r\nSTEP4.Send(_STEP4);\r\nSTEP5.Send(_STEP5);\r\n\r\nSEQ.Send(_SEQ);\r\n",
-            "Members": "\/\/ Declare Local Variables for Inputs\r\nboolean _STEP;\r\nboolean _RST;\r\n\r\n\/\/Declare Local Variables for Outputs\r\nboolean _STEP0;\r\nboolean _STEP1;\r\nboolean _STEP2;\r\nboolean _STEP3;\r\nboolean _STEP4;\r\nboolean _STEP5;\r\nuint8_t _SEQ;\r\n\r\n\/\/Declare Local Variables\r\n\r\n\r\n",
-            "OnInit": "_STEP0 = true;\r\n_STEP1 = false;\r\n_STEP2 = false;\r\n_STEP3 = false;\r\n_STEP4 = false;\r\n_STEP4 = false;\r\n_SEQ = 0;\r\n\r\n_STEP = false;\r\n",
+            "Members": "\/\/ Declare Local Variables for Inputs\r\nboolean _STEP;\r\nboolean _RST;\r\n\r\n\/\/Declare Local Variables for Outputs\r\nboolean _STEP0;\r\nboolean _STEP1;\r\nboolean _STEP2;\r\nboolean _STEP3;\r\nboolean _STEP4;\r\nboolean _STEP5;\r\nuint8_t _SEQ;\r\n\r\n\/\/Declare Local Variables\r\n\r\nboolean _LASTSTEP;\r\n",
+            "OnInit": "_STEP0 = true;\r\n_STEP1 = false;\r\n_STEP2 = false;\r\n_STEP3 = false;\r\n_STEP4 = false;\r\n_STEP4 = false;\r\n_SEQ   = 0;\r\n\r\n_STEP     = false;\r\n_LASTSTEP = _STEP;\r\n",
             "Inputs": {
               "*": [
                 {
@@ -371,19 +370,14 @@
                   "+": "TArduinoCustomCodeInputDigitalElement",
                   "InputPin": {
                     "SourcePin": {
-                      "ID": "__OpenWireRootUnit__.GPBTN_OS.OutputPin"
+                      "ID": "__OpenWireRootUnit__.GP_BTN.OutputPin"
                     }
                   }
                 },
                 {
                   "Name": "RST",
                   "OnData": "_RST = AValue;",
-                  "+": "TArduinoCustomCodeInputDigitalElement",
-                  "InputPin": {
-                    "SourcePin": {
-                      "ID": "__OpenWireRootUnit__.RST_AND.OutputPin"
-                    }
-                  }
+                  "+": "TArduinoCustomCodeInputDigitalElement"
                 }
               ]
             },
@@ -454,10 +448,6 @@
                   "OutputPin": {
                     "SinkPins": [
                       {
-                        "Name": "__OpenWireRootUnit__.RST_AND.InputPins.Pin [1]",
-                        "ID": "__OpenWireRootUnit__.RST_AND.InputPins._Pin1"
-                      },
-                      {
                         "Name": "__OpenWireRootUnit__.PACK_DATA.Elements.Digital.InputPin",
                         "ID": "__OpenWireRootUnit__.PACK_DATA.Elements._Item6.InputPin"
                       }
@@ -481,106 +471,11 @@
             }
           },
           "Type": "Component",
-          "Y": 368
-        },
-        {
-          "X": 256,
-          "Name": "GPBTN_OS",
-          "Instance": {
-            "CanRestart": false,
-            "OutputPin": {
-              "SinkPins": [
-                {
-                  "Name": "__OpenWireRootUnit__.RST_AND.InputPins.Pin [0]",
-                  "ID": "__OpenWireRootUnit__.RST_AND.InputPins._Pin0"
-                },
-                {
-                  "Name": "__OpenWireRootUnit__.RUDCAL_SEQ.Inputs.STEP.InputPin",
-                  "ID": "__OpenWireRootUnit__.RUDCAL_SEQ.Inputs._Item0.InputPin"
-                }
-              ]
-            },
-            "+": "TArduinoTimer",
-            "StartInputPin": {
-              "SourcePins": [
-                {
-                  "ID": "__OpenWireRootUnit__.GP_BTN.OutputPin"
-                }
-              ]
-            },
-            "Interval": 10000
-          },
-          "Type": "Component",
-          "Y": 256
-        },
-        {
-          "X": 288,
-          "Name": "RST_AND",
-          "Instance": {
-            "InputPins": {
-              "Form": "__OpenWireRootUnit__",
-              "Pins": [
-                {
-                  "Type": "ptSink",
-                  "SourcePin": {
-                    "ID": "__OpenWireRootUnit__.GPBTN_OS.OutputPin"
-                  }
-                },
-                {
-                  "Type": "ptSink",
-                  "SourcePin": {
-                    "Name": "__OpenWireRootUnit__.RUDCAL_SEQ.Outputs.STEP5.OutputPin",
-                    "ID": "__OpenWireRootUnit__.RUDCAL_SEQ.Outputs._Item5.OutputPin"
-                  }
-                }
-              ]
-            },
-            "OutputPin": {
-              "SinkPins": [
-                {
-                  "Name": "__OpenWireRootUnit__.RUDCAL_SEQ.Inputs.RST.InputPin",
-                  "ID": "__OpenWireRootUnit__.RUDCAL_SEQ.Inputs._Item1.InputPin"
-                }
-              ]
-            },
-            "+": "TArduinoBooleanAnd"
-          },
-          "Type": "Component",
-          "Y": 592
-        },
-        {
-          "X": 1520,
-          "Name": "B_NAME",
-          "Instance": {
-            "Members": "boolean _IN;\r\nboolean _OUT;\r\n",
-            "Inputs": {
-              "*": [
-                {
-                  "Name": "IN",
-                  "OnData": "_IN = AValue;",
-                  "+": "TArduinoCustomCodeInputDigitalElement"
-                }
-              ]
-            },
-            "Outputs": {
-              "*": [
-                {
-                  "Name": "OUT",
-                  "+": "TArduinoCustomCodeOutputDigitalElement"
-                }
-              ]
-            },
-            "+": "TArduinoCustomCode",
-            "OnExecute": "_OUT = _IN;\r\nOUT.Send(_OUT);",
-            "OnStart": "OUT.Send(_IN);"
-          },
-          "Type": "Component",
-          "Y": 448
+          "Y": 288
         }
       ],
       "Sub Graphs": [
         {
-          "Type": "Diagram",
           "Name": "_Sub_Root_",
           "*": [
             {
@@ -604,10 +499,13 @@
               "Type": "Component",
               "Y": 256
             }
+          ],
+          "Type": "Diagram",
+          "Selection": [
+            "RUDCAL_SEQ"
           ]
         },
         {
-          "Type": "Diagram",
           "Name": "_Sub_Root_",
           "*": [
             {
@@ -627,10 +525,17 @@
               "Type": "Component",
               "Y": 256
             }
+          ],
+          "Type": "Diagram",
+          "Selection": [
+            "RUDCAL_SEQ"
           ]
         }
       ],
-      "Type": "Diagram"
+      "Type": "Diagram",
+      "Selection": [
+        "RUDCAL_SEQ"
+      ]
     }
   ]
 }
