@@ -1,0 +1,574 @@
+{
+  "Config": {
+    "Communications": [
+      {
+        "Reset": true,
+        "SendCR": true,
+        "Serial": "COM5",
+        "Speed": "115200",
+        "AutoConnect": true,
+        "Format": "Auto Select",
+        "SendNL": true,
+        "Type": "Serial"
+      }
+    ],
+    "Build": {
+      "Board": "esp8266:esp8266:d1:xtal=80,vt=flash,exception=disabled,stacksmash=disabled,ssl=all,mmu=3232,non32xfer=fast,eesz=4M2M,ip=lm2f,dbg=Disabled,lvl=None____,wipe=none,baud=921600",
+      "Serial": "COM5"
+    }
+  },
+  "Version": "2",
+  "Product": "Visuino Pro - Visual Arduino Programming",
+  "Content": "OpenWire Diagram",
+  "Units": [
+    {
+      "Name": "__OpenWireRootUnit__",
+      "*": [
+        {
+          "X": 1152,
+          "Name": "Arduino",
+          "Instance": {
+            "AnalogInput": {
+              "*": [
+                {
+                  "+": "TArduinoESP8266AnalogInputChannel"
+                }
+              ]
+            },
+            "Serial": {
+              "*": [
+                {
+                  "Speed": 115200,
+                  "InputPin": {
+                    "SourcePins": [
+                      {
+                        "ID": "__OpenWireRootUnit__.PACK_DATA.OutputPin"
+                      }
+                    ]
+                  },
+                  "+": "TArduinoESP8266HardwareSerial"
+                },
+                {
+                  "+": "TArduinoESP8266HardwareSerial1"
+                }
+              ]
+            },
+            "+": "TArduinoBoard",
+            "Modules": {
+              "*": [
+                {
+                  "HostName": "",
+                  "+": "TArduinoESP8266WiFiModule",
+                  "Time": {
+                    "NetworkTime": {
+                      "TimeZoneOffset": 0,
+                      "Servers": {
+                        "*": [
+                          {
+                            "+": "TArduinoESP8266WiFiNetworkTimeServer1"
+                          },
+                          {
+                            "+": "TArduinoESP8266WiFiNetworkTimeServer2"
+                          },
+                          {
+                            "+": "TArduinoESP8266WiFiNetworkTimeServer3"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "AccessPoint": {
+                    "SSID": "",
+                    "Password": ""
+                  }
+                },
+                {
+                  "Enabled": false,
+                  "+": "TArduinoEEPROMModule"
+                },
+                {
+                  "+": "TArduinoPWMConfigModule"
+                },
+                {
+                  "+": "TArduinoESP8266ProcessorModule"
+                },
+                {
+                  "+": "TArduinoESP8266WatchdogTimerModule"
+                }
+              ]
+            },
+            "I2CChannels": {
+              "*": [
+                {
+                  "+": "TArduinoESP8266_WeMos_D1_I2C"
+                }
+              ]
+            },
+            "Digital": {
+              "*": [
+                {
+                  "+": "TArduinoBasicDigitalOpenDrainPWMSerial0InterruptChannel"
+                },
+                {
+                  "+": "TArduinoBasicDigitalOpenDrainPWMSerial0InterruptChannel"
+                },
+                {
+                  "OutputPin": {
+                    "SinkPins": [
+                      {
+                        "ID": "__OpenWireRootUnit__.DI_00.InputPin"
+                      }
+                    ]
+                  },
+                  "+": "TArduinoBasicDigitalPWMChannel"
+                },
+                {
+                  "+": "TArduinoBasicDigitalOpenDrainPWMInterruptChannel"
+                },
+                {
+                  "+": "TArduinoBasicDigitalOpenDrainPWMInterruptChannel"
+                },
+                {
+                  "+": "TArduinoBasicDigitalOpenDrainPWMInterruptChannel"
+                },
+                {
+                  "+": "TArduinoBasicDigitalOpenDrainPWMSerial1InterruptChannel"
+                },
+                {
+                  "DigitalInputPin": {
+                    "SourcePin": {
+                      "ID": "__OpenWireRootUnit__.GP_BTN.OutputPin"
+                    }
+                  },
+                  "+": "TArduinoBasicDigitalOpenDrainPWMSPI0InterruptChannel"
+                },
+                {
+                  "+": "TArduinoBasicDigitalOpenDrainPWMSPI0InterruptChannel"
+                },
+                {
+                  "+": "TArduinoBasicDigitalOpenDrainPWMSPI0InterruptChannel"
+                },
+                {
+                  "+": "TArduinoBasicDigitalOpenDrainPWMInterruptChannel"
+                }
+              ]
+            },
+            "SPIChannels": {
+              "*": [
+                {
+                  "+": "TArduinoSPI"
+                }
+              ]
+            },
+            "BoardType": "WeMos D1 Mini"
+          },
+          "Type": "Component",
+          "Y": 256
+        },
+        {
+          "X": 704,
+          "Name": "Pls200ms",
+          "Instance": {
+            "Frequency": 5,
+            "OutputPin": {
+              "SinkPins": [
+                {
+                  "ID": "__OpenWireRootUnit__.PACK_DATA.ClockInputPin"
+                }
+              ]
+            },
+            "+": "TArduinoPulseGenerator",
+            "Phase": 0,
+            "Asymmetry": 0
+          },
+          "Type": "Component",
+          "Y": 624
+        },
+        {
+          "X": 1408,
+          "Name": "DI_00",
+          "Instance": {
+            "InputPin": {
+              "SourcePin": {
+                "Name": "__OpenWireRootUnit__.Arduino.Digital[2].OutputPin",
+                "ID": "__OpenWireRootUnit__.Arduino.Digital._Item2.OutputPin"
+              }
+            },
+            "OutputPin": {
+              "SinkPins": [
+                {
+                  "ID": "__OpenWireRootUnit__.GP_BTN.InputPin"
+                }
+              ]
+            },
+            "+": "TArduinoDigitalChangeOnly"
+          },
+          "Type": "Component",
+          "Y": 800
+        },
+        {
+          "X": 880,
+          "Name": "PACK_DATA",
+          "Instance": {
+            "ClockInputPin": {
+              "SourcePins": [
+                {
+                  "ID": "__OpenWireRootUnit__.Pls200ms.OutputPin"
+                }
+              ]
+            },
+            "OutputPin": {
+              "SinkPins": [
+                {
+                  "Name": "__OpenWireRootUnit__.Arduino.Serial.Item[ 0 ].InputPin",
+                  "ID": "__OpenWireRootUnit__.Arduino.Serial._Item0.InputPin"
+                }
+              ]
+            },
+            "+": "TArduinoPacket",
+            "HeadMarker": {
+              "Bytes": {
+                "_Data": "VVU="
+              }
+            },
+            "Elements": {
+              "*": [
+                {
+                  "Name": "GP_BTN",
+                  "InputPin": {
+                    "SourcePin": {
+                      "ID": "__OpenWireRootUnit__.GP_BTN.OutputPin"
+                    }
+                  },
+                  "+": "TArduinoDigitalBinaryPacketElement"
+                },
+                {
+                  "Name": "STEP0",
+                  "InputPin": {
+                    "SourcePin": {
+                      "Name": "__OpenWireRootUnit__.RUDCAL_SEQ.Outputs.STEP0.OutputPin",
+                      "ID": "__OpenWireRootUnit__.RUDCAL_SEQ.Outputs._Item0.OutputPin"
+                    }
+                  },
+                  "+": "TArduinoDigitalBinaryPacketElement"
+                },
+                {
+                  "Name": "STEP1",
+                  "InputPin": {
+                    "SourcePin": {
+                      "Name": "__OpenWireRootUnit__.RUDCAL_SEQ.Outputs.STEP1.OutputPin",
+                      "ID": "__OpenWireRootUnit__.RUDCAL_SEQ.Outputs._Item1.OutputPin"
+                    }
+                  },
+                  "+": "TArduinoDigitalBinaryPacketElement"
+                },
+                {
+                  "Name": "STEP2",
+                  "InputPin": {
+                    "SourcePin": {
+                      "Name": "__OpenWireRootUnit__.RUDCAL_SEQ.Outputs.STEP2.OutputPin",
+                      "ID": "__OpenWireRootUnit__.RUDCAL_SEQ.Outputs._Item2.OutputPin"
+                    }
+                  },
+                  "+": "TArduinoDigitalBinaryPacketElement"
+                },
+                {
+                  "Name": "STEP3",
+                  "InputPin": {
+                    "SourcePin": {
+                      "Name": "__OpenWireRootUnit__.RUDCAL_SEQ.Outputs.STEP3.OutputPin",
+                      "ID": "__OpenWireRootUnit__.RUDCAL_SEQ.Outputs._Item3.OutputPin"
+                    }
+                  },
+                  "+": "TArduinoDigitalBinaryPacketElement"
+                },
+                {
+                  "Name": "STEP4",
+                  "InputPin": {
+                    "SourcePin": {
+                      "Name": "__OpenWireRootUnit__.RUDCAL_SEQ.Outputs.STEP4.OutputPin",
+                      "ID": "__OpenWireRootUnit__.RUDCAL_SEQ.Outputs._Item4.OutputPin"
+                    }
+                  },
+                  "+": "TArduinoDigitalBinaryPacketElement"
+                },
+                {
+                  "Name": "STEP5",
+                  "InputPin": {
+                    "SourcePin": {
+                      "Name": "__OpenWireRootUnit__.RUDCAL_SEQ.Outputs.STEP5.OutputPin",
+                      "ID": "__OpenWireRootUnit__.RUDCAL_SEQ.Outputs._Item5.OutputPin"
+                    }
+                  },
+                  "+": "TArduinoDigitalBinaryPacketElement"
+                },
+                {
+                  "Name": "SEQ",
+                  "InputPin": {
+                    "SourcePin": {
+                      "Name": "__OpenWireRootUnit__.RUDCAL_SEQ.Outputs.SEQ.OutputPin",
+                      "ID": "__OpenWireRootUnit__.RUDCAL_SEQ.Outputs._Item6.OutputPin"
+                    }
+                  },
+                  "+": "TArduinoUnsigned8BinaryPacketElement",
+                  "Visualization": {
+                    "Instrument": {
+                      "+": "TArduinoPacketElementUnsignedAngularGauge"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "Type": "Component",
+          "Y": 256
+        },
+        {
+          "X": 1504,
+          "Name": "GP_BTN",
+          "Instance": {
+            "InputPin": {
+              "SourcePin": {
+                "ID": "__OpenWireRootUnit__.DI_00.OutputPin"
+              }
+            },
+            "OutputPin": {
+              "SinkPins": [
+                {
+                  "Name": "__OpenWireRootUnit__.Arduino.Digital[7].DigitalInputPin",
+                  "ID": "__OpenWireRootUnit__.Arduino.Digital._Item7.DigitalInputPin"
+                },
+                {
+                  "Name": "__OpenWireRootUnit__.PACK_DATA.Elements.Digital.InputPin",
+                  "ID": "__OpenWireRootUnit__.PACK_DATA.Elements._Item0.InputPin"
+                },
+                {
+                  "Name": "__OpenWireRootUnit__.RUDCAL_SEQ.Inputs.STEP.InputPin",
+                  "ID": "__OpenWireRootUnit__.RUDCAL_SEQ.Inputs._Item0.InputPin"
+                }
+              ]
+            },
+            "+": "TArduinoButton"
+          },
+          "Type": "Component",
+          "Y": 800
+        },
+        {
+          "X": 448,
+          "Name": "RUDCAL_SEQ",
+          "Instance": {
+            "+": "TArduinoCustomCode",
+            "OnExecute": "if (_RST)\r\n{\r\n    _SEQ = 0;\r\n    _STEP5 = false;\r\n    _STEP4 = false;\r\n    _STEP3 = false;\r\n    _STEP2 = false;\r\n    _STEP1 = false;\r\n    _STEP0 = true;\r\n}\r\n\r\nif (_STEP && !_LASTSTEP && !_RST) \r\n{\r\n    \r\n    _LASTSTEP = true;\r\n\r\n    switch (_SEQ) {\r\n    \r\n        case 0:\r\n          _SEQ = 1;\r\n         _STEP0 = false;\r\n         _STEP1 = true;\r\n         break;\r\n\r\n        case 1:\r\n          _SEQ = 2;\r\n         _STEP1 = false;\r\n         _STEP2 = true;\r\n         break;\r\n\r\n        case 2:\r\n          _SEQ = 3;\r\n         _STEP2 = false;\r\n         _STEP3 = true;\r\n         break;  \r\n\r\n        case 3:\r\n          _SEQ = 4;\r\n         _STEP3 = false;\r\n         _STEP4 = true;\r\n         break;  \r\n\r\n        case 4:\r\n          _SEQ = 5;\r\n         _STEP4 = false;\r\n         _STEP5 = true;\r\n         break;\r\n\r\n        case 5:\r\n          _SEQ = 0;\r\n         _STEP5 = false;\r\n         _STEP0 = true;\r\n         break;\r\n\r\n    } \/\/ END SWITCH\r\n}\r\n\r\nif (_LASTSTEP && !_STEP)\r\n    _LASTSTEP = false;\r\n\r\n\/\/ Update Outputs\r\n\r\nSTEP0.Send(_STEP0);\r\nSTEP1.Send(_STEP1);\r\nSTEP2.Send(_STEP2);\r\nSTEP3.Send(_STEP3);\r\nSTEP4.Send(_STEP4);\r\nSTEP5.Send(_STEP5);\r\nSEQ.Send(_SEQ);",
+            "OnStart": "STEP0.Send(_STEP0);\r\nSTEP1.Send(_STEP1);\r\nSTEP2.Send(_STEP2);\r\nSTEP3.Send(_STEP3);\r\nSTEP4.Send(_STEP4);\r\nSTEP5.Send(_STEP5);\r\n\r\nSEQ.Send(_SEQ);\r\n",
+            "Members": "\/\/ Declare Local Variables for Inputs\r\nboolean _STEP;\r\nboolean _RST;\r\n\r\n\/\/Declare Local Variables for Outputs\r\nboolean _STEP0;\r\nboolean _STEP1;\r\nboolean _STEP2;\r\nboolean _STEP3;\r\nboolean _STEP4;\r\nboolean _STEP5;\r\nuint8_t _SEQ;\r\n\r\n\/\/Declare Local Variables\r\n\r\nboolean _LASTSTEP;\r\n",
+            "OnInit": "_STEP0 = true;\r\n_STEP1 = false;\r\n_STEP2 = false;\r\n_STEP3 = false;\r\n_STEP4 = false;\r\n_STEP4 = false;\r\n_SEQ   = 0;\r\n\r\n_STEP     = false;\r\n_LASTSTEP = _STEP;\r\n",
+            "Inputs": {
+              "*": [
+                {
+                  "Name": "STEP",
+                  "OnData": "_STEP = AValue;",
+                  "+": "TArduinoCustomCodeInputDigitalElement",
+                  "InputPin": {
+                    "SourcePin": {
+                      "ID": "__OpenWireRootUnit__.GP_BTN.OutputPin"
+                    }
+                  }
+                },
+                {
+                  "Name": "RST",
+                  "OnData": "_RST = AValue;",
+                  "+": "TArduinoCustomCodeInputDigitalElement",
+                  "InputPin": {
+                    "SourcePin": {
+                      "ID": "__OpenWireRootUnit__.DELAY_500MS.OutputPin"
+                    }
+                  }
+                }
+              ]
+            },
+            "Outputs": {
+              "*": [
+                {
+                  "Name": "STEP0",
+                  "OutputPin": {
+                    "SinkPins": [
+                      {
+                        "Name": "__OpenWireRootUnit__.PACK_DATA.Elements.Digital.InputPin",
+                        "ID": "__OpenWireRootUnit__.PACK_DATA.Elements._Item1.InputPin"
+                      }
+                    ]
+                  },
+                  "+": "TArduinoCustomCodeOutputDigitalElement"
+                },
+                {
+                  "Name": "STEP1",
+                  "OutputPin": {
+                    "SinkPins": [
+                      {
+                        "Name": "__OpenWireRootUnit__.PACK_DATA.Elements.Digital.InputPin",
+                        "ID": "__OpenWireRootUnit__.PACK_DATA.Elements._Item2.InputPin"
+                      }
+                    ]
+                  },
+                  "+": "TArduinoCustomCodeOutputDigitalElement"
+                },
+                {
+                  "Name": "STEP2",
+                  "OutputPin": {
+                    "SinkPins": [
+                      {
+                        "Name": "__OpenWireRootUnit__.PACK_DATA.Elements.Digital.InputPin",
+                        "ID": "__OpenWireRootUnit__.PACK_DATA.Elements._Item3.InputPin"
+                      }
+                    ]
+                  },
+                  "+": "TArduinoCustomCodeOutputDigitalElement"
+                },
+                {
+                  "Name": "STEP3",
+                  "OutputPin": {
+                    "SinkPins": [
+                      {
+                        "Name": "__OpenWireRootUnit__.PACK_DATA.Elements.Digital.InputPin",
+                        "ID": "__OpenWireRootUnit__.PACK_DATA.Elements._Item4.InputPin"
+                      }
+                    ]
+                  },
+                  "+": "TArduinoCustomCodeOutputDigitalElement"
+                },
+                {
+                  "Name": "STEP4",
+                  "OutputPin": {
+                    "SinkPins": [
+                      {
+                        "Name": "__OpenWireRootUnit__.PACK_DATA.Elements.Digital.InputPin",
+                        "ID": "__OpenWireRootUnit__.PACK_DATA.Elements._Item5.InputPin"
+                      },
+                      {
+                        "ID": "__OpenWireRootUnit__.DELAY_500MS.InputPin"
+                      }
+                    ]
+                  },
+                  "+": "TArduinoCustomCodeOutputDigitalElement"
+                },
+                {
+                  "Name": "STEP5",
+                  "OutputPin": {
+                    "SinkPins": [
+                      {
+                        "Name": "__OpenWireRootUnit__.PACK_DATA.Elements.Digital.InputPin",
+                        "ID": "__OpenWireRootUnit__.PACK_DATA.Elements._Item6.InputPin"
+                      }
+                    ]
+                  },
+                  "+": "TArduinoCustomCodeOutputDigitalElement"
+                },
+                {
+                  "Name": "SEQ",
+                  "OutputPin": {
+                    "SinkPins": [
+                      {
+                        "Name": "__OpenWireRootUnit__.PACK_DATA.Elements.Unsigned 8bit.InputPin",
+                        "ID": "__OpenWireRootUnit__.PACK_DATA.Elements._Item7.InputPin"
+                      }
+                    ]
+                  },
+                  "+": "TArduinoCustomCodeOutputUnsignedElement"
+                }
+              ]
+            }
+          },
+          "Type": "Component",
+          "Y": 288
+        },
+        {
+          "X": 256,
+          "Name": "DELAY_500MS",
+          "Instance": {
+            "InputPin": {
+              "SourcePin": {
+                "Name": "__OpenWireRootUnit__.RUDCAL_SEQ.Outputs.STEP4.OutputPin",
+                "ID": "__OpenWireRootUnit__.RUDCAL_SEQ.Outputs._Item4.OutputPin"
+              }
+            },
+            "OutputPin": {
+              "SinkPins": [
+                {
+                  "Name": "__OpenWireRootUnit__.RUDCAL_SEQ.Inputs.RST.InputPin",
+                  "ID": "__OpenWireRootUnit__.RUDCAL_SEQ.Inputs._Item1.InputPin"
+                }
+              ]
+            },
+            "+": "TArduinoOnOffDelay",
+            "OnInterval": 500000,
+            "OffInterval": 0
+          },
+          "Type": "Component",
+          "Y": 352
+        }
+      ],
+      "Sub Graphs": [
+        {
+          "Name": "_Sub_Root_",
+          "*": [
+            {
+              "X": 256,
+              "Name": "RUD_SIM",
+              "Instance": {
+                "Properties": {
+                  "*": [
+                    {
+                      "Name": "Digital Output1",
+                      "+": "TVisuinoSubDiagramPropertyDigitalSink"
+                    },
+                    {
+                      "Name": "Analog Output1",
+                      "+": "TVisuinoSubDiagramPropertyAnalogSink"
+                    }
+                  ]
+                },
+                "+": "TVisuinoSubDiagram"
+              },
+              "Type": "Component",
+              "Y": 256
+            }
+          ],
+          "Type": "Diagram",
+          "Selection": [
+            "DELAY_500MS"
+          ]
+        },
+        {
+          "Name": "_Sub_Root_",
+          "*": [
+            {
+              "X": 256,
+              "Name": "RUD_CAL",
+              "Instance": {
+                "Properties": {
+                  "*": [
+                    {
+                      "Name": "GP_BTN",
+                      "+": "TVisuinoSubDiagramPropertyDigitalSource"
+                    }
+                  ]
+                },
+                "+": "TVisuinoSubDiagram"
+              },
+              "Type": "Component",
+              "Y": 256
+            }
+          ],
+          "Type": "Diagram",
+          "Selection": [
+            "DELAY_500MS"
+          ]
+        }
+      ],
+      "Type": "Diagram",
+      "Selection": [
+        "DELAY_500MS"
+      ]
+    }
+  ]
+}
