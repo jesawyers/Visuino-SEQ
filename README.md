@@ -1,6 +1,6 @@
 ##  Visuino FUNCTION BLOCK - SEQ (Sequence)
 
-####  written by - me@johnsawyers.com
+####  written by - jesawyers63@gmail.com
 
 #### license - Creative Common License CC-BY-NC
 
