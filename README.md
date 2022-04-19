@@ -1,4 +1,4 @@
-##  FUNCTION BLOCK - SEQ (Sequence)
+##  Visuino FUNCTION BLOCK - SEQ (Sequence)
 
 ####  written by - me@johnsawyers.com
 
