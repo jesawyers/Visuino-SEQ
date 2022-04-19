@@ -4,7 +4,7 @@
       {
         "Reset": true,
         "SendCR": true,
-        "Serial": "COM5",
+        "Serial": "COM8",
         "Speed": "115200",
         "AutoConnect": true,
         "Format": "Auto Select",
@@ -25,7 +25,7 @@
       "Name": "__OpenWireRootUnit__",
       "*": [
         {
-          "X": 1152,
+          "X": 1248,
           "Name": "Arduino",
           "Instance": {
             "AnalogInput": {
@@ -113,13 +113,6 @@
                   "+": "TArduinoBasicDigitalOpenDrainPWMSerial0InterruptChannel"
                 },
                 {
-                  "OutputPin": {
-                    "SinkPins": [
-                      {
-                        "ID": "__OpenWireRootUnit__.DI_00.InputPin"
-                      }
-                    ]
-                  },
                   "+": "TArduinoBasicDigitalPWMChannel"
                 },
                 {
@@ -135,11 +128,6 @@
                   "+": "TArduinoBasicDigitalOpenDrainPWMSerial1InterruptChannel"
                 },
                 {
-                  "DigitalInputPin": {
-                    "SourcePin": {
-                      "ID": "__OpenWireRootUnit__.GP_BTN.OutputPin"
-                    }
-                  },
                   "+": "TArduinoBasicDigitalOpenDrainPWMSPI0InterruptChannel"
                 },
                 {
@@ -166,7 +154,7 @@
           "Y": 256
         },
         {
-          "X": 704,
+          "X": 800,
           "Name": "Pls200ms",
           "Instance": {
             "Frequency": 5,
@@ -185,29 +173,7 @@
           "Y": 624
         },
         {
-          "X": 1408,
-          "Name": "DI_00",
-          "Instance": {
-            "InputPin": {
-              "SourcePin": {
-                "Name": "__OpenWireRootUnit__.Arduino.Digital[2].OutputPin",
-                "ID": "__OpenWireRootUnit__.Arduino.Digital._Item2.OutputPin"
-              }
-            },
-            "OutputPin": {
-              "SinkPins": [
-                {
-                  "ID": "__OpenWireRootUnit__.GP_BTN.InputPin"
-                }
-              ]
-            },
-            "+": "TArduinoDigitalChangeOnly"
-          },
-          "Type": "Component",
-          "Y": 800
-        },
-        {
-          "X": 880,
+          "X": 976,
           "Name": "PACK_DATA",
           "Instance": {
             "ClockInputPin": {
@@ -220,7 +186,7 @@
             "OutputPin": {
               "SinkPins": [
                 {
-                  "Name": "__OpenWireRootUnit__.Arduino.Serial.Item[ 0 ].InputPin",
+                  "Name": "__OpenWireRootUnit__.Arduino.Serial.Item[ 0 ] (115200).InputPin",
                   "ID": "__OpenWireRootUnit__.Arduino.Serial._Item0.InputPin"
                 }
               ]
@@ -234,10 +200,10 @@
             "Elements": {
               "*": [
                 {
-                  "Name": "GP_BTN",
+                  "Name": "PULSE",
                   "InputPin": {
                     "SourcePin": {
-                      "ID": "__OpenWireRootUnit__.GP_BTN.OutputPin"
+                      "ID": "__OpenWireRootUnit__.PulseGenerator1.OutputPin"
                     }
                   },
                   "+": "TArduinoDigitalBinaryPacketElement"
@@ -246,8 +212,8 @@
                   "Name": "STEP0",
                   "InputPin": {
                     "SourcePin": {
-                      "Name": "__OpenWireRootUnit__.RUDCAL_SEQ.Outputs.STEP0.OutputPin",
-                      "ID": "__OpenWireRootUnit__.RUDCAL_SEQ.Outputs._Item0.OutputPin"
+                      "Name": "__OpenWireRootUnit__.CAL_SEQ.Outputs.Digital.OutputPin",
+                      "ID": "__OpenWireRootUnit__.CAL_SEQ.Outputs._Item0.OutputPin"
                     }
                   },
                   "+": "TArduinoDigitalBinaryPacketElement"
@@ -256,8 +222,8 @@
                   "Name": "STEP1",
                   "InputPin": {
                     "SourcePin": {
-                      "Name": "__OpenWireRootUnit__.RUDCAL_SEQ.Outputs.STEP1.OutputPin",
-                      "ID": "__OpenWireRootUnit__.RUDCAL_SEQ.Outputs._Item1.OutputPin"
+                      "Name": "__OpenWireRootUnit__.CAL_SEQ.Outputs.Digital.OutputPin",
+                      "ID": "__OpenWireRootUnit__.CAL_SEQ.Outputs._Item1.OutputPin"
                     }
                   },
                   "+": "TArduinoDigitalBinaryPacketElement"
@@ -266,8 +232,8 @@
                   "Name": "STEP2",
                   "InputPin": {
                     "SourcePin": {
-                      "Name": "__OpenWireRootUnit__.RUDCAL_SEQ.Outputs.STEP2.OutputPin",
-                      "ID": "__OpenWireRootUnit__.RUDCAL_SEQ.Outputs._Item2.OutputPin"
+                      "Name": "__OpenWireRootUnit__.CAL_SEQ.Outputs.Digital.OutputPin",
+                      "ID": "__OpenWireRootUnit__.CAL_SEQ.Outputs._Item2.OutputPin"
                     }
                   },
                   "+": "TArduinoDigitalBinaryPacketElement"
@@ -276,8 +242,8 @@
                   "Name": "STEP3",
                   "InputPin": {
                     "SourcePin": {
-                      "Name": "__OpenWireRootUnit__.RUDCAL_SEQ.Outputs.STEP3.OutputPin",
-                      "ID": "__OpenWireRootUnit__.RUDCAL_SEQ.Outputs._Item3.OutputPin"
+                      "Name": "__OpenWireRootUnit__.CAL_SEQ.Outputs.Digital.OutputPin",
+                      "ID": "__OpenWireRootUnit__.CAL_SEQ.Outputs._Item3.OutputPin"
                     }
                   },
                   "+": "TArduinoDigitalBinaryPacketElement"
@@ -286,8 +252,8 @@
                   "Name": "STEP4",
                   "InputPin": {
                     "SourcePin": {
-                      "Name": "__OpenWireRootUnit__.RUDCAL_SEQ.Outputs.STEP4.OutputPin",
-                      "ID": "__OpenWireRootUnit__.RUDCAL_SEQ.Outputs._Item4.OutputPin"
+                      "Name": "__OpenWireRootUnit__.CAL_SEQ.Outputs.Digital.OutputPin",
+                      "ID": "__OpenWireRootUnit__.CAL_SEQ.Outputs._Item4.OutputPin"
                     }
                   },
                   "+": "TArduinoDigitalBinaryPacketElement"
@@ -296,8 +262,8 @@
                   "Name": "STEP5",
                   "InputPin": {
                     "SourcePin": {
-                      "Name": "__OpenWireRootUnit__.RUDCAL_SEQ.Outputs.STEP5.OutputPin",
-                      "ID": "__OpenWireRootUnit__.RUDCAL_SEQ.Outputs._Item5.OutputPin"
+                      "Name": "__OpenWireRootUnit__.CAL_SEQ.Outputs.Digital.OutputPin",
+                      "ID": "__OpenWireRootUnit__.CAL_SEQ.Outputs._Item5.OutputPin"
                     }
                   },
                   "+": "TArduinoDigitalBinaryPacketElement"
@@ -306,8 +272,8 @@
                   "Name": "SEQ",
                   "InputPin": {
                     "SourcePin": {
-                      "Name": "__OpenWireRootUnit__.RUDCAL_SEQ.Outputs.SEQ.OutputPin",
-                      "ID": "__OpenWireRootUnit__.RUDCAL_SEQ.Outputs._Item6.OutputPin"
+                      "Name": "__OpenWireRootUnit__.CAL_SEQ.Outputs.Unsigned.OutputPin",
+                      "ID": "__OpenWireRootUnit__.CAL_SEQ.Outputs._Item6.OutputPin"
                     }
                   },
                   "+": "TArduinoUnsigned8BinaryPacketElement",
@@ -324,38 +290,8 @@
           "Y": 256
         },
         {
-          "X": 1504,
-          "Name": "GP_BTN",
-          "Instance": {
-            "InputPin": {
-              "SourcePin": {
-                "ID": "__OpenWireRootUnit__.DI_00.OutputPin"
-              }
-            },
-            "OutputPin": {
-              "SinkPins": [
-                {
-                  "Name": "__OpenWireRootUnit__.Arduino.Digital[7].DigitalInputPin",
-                  "ID": "__OpenWireRootUnit__.Arduino.Digital._Item7.DigitalInputPin"
-                },
-                {
-                  "Name": "__OpenWireRootUnit__.PACK_DATA.Elements.Digital.InputPin",
-                  "ID": "__OpenWireRootUnit__.PACK_DATA.Elements._Item0.InputPin"
-                },
-                {
-                  "Name": "__OpenWireRootUnit__.RUDCAL_SEQ.Inputs.STEP.InputPin",
-                  "ID": "__OpenWireRootUnit__.RUDCAL_SEQ.Inputs._Item0.InputPin"
-                }
-              ]
-            },
-            "+": "TArduinoButton"
-          },
-          "Type": "Component",
-          "Y": 800
-        },
-        {
-          "X": 448,
-          "Name": "RUDCAL_SEQ",
+          "X": 544,
+          "Name": "CAL_SEQ",
           "Instance": {
             "+": "TArduinoCustomCode",
             "OnExecute": "if (_RST)\r\n{\r\n    _SEQ = 0;\r\n    _STEP5 = false;\r\n    _STEP4 = false;\r\n    _STEP3 = false;\r\n    _STEP2 = false;\r\n    _STEP1 = false;\r\n    _STEP0 = true;\r\n}\r\n\r\nif (_STEP && !_LASTSTEP && !_RST) \r\n{\r\n    \r\n    _LASTSTEP = true;\r\n\r\n    switch (_SEQ) {\r\n    \r\n        case 0:\r\n          _SEQ = 1;\r\n         _STEP0 = false;\r\n         _STEP1 = true;\r\n         break;\r\n\r\n        case 1:\r\n          _SEQ = 2;\r\n         _STEP1 = false;\r\n         _STEP2 = true;\r\n         break;\r\n\r\n        case 2:\r\n          _SEQ = 3;\r\n         _STEP2 = false;\r\n         _STEP3 = true;\r\n         break;  \r\n\r\n        case 3:\r\n          _SEQ = 4;\r\n         _STEP3 = false;\r\n         _STEP4 = true;\r\n         break;  \r\n\r\n        case 4:\r\n          _SEQ = 5;\r\n         _STEP4 = false;\r\n         _STEP5 = true;\r\n         break;\r\n\r\n        case 5:\r\n          _SEQ = 0;\r\n         _STEP5 = false;\r\n         _STEP0 = true;\r\n         break;\r\n\r\n    } \/\/ END SWITCH\r\n}\r\n\r\nif (_LASTSTEP && !_STEP)\r\n    _LASTSTEP = false;\r\n\r\n\/\/ Update Outputs\r\n\r\nSTEP0.Send(_STEP0);\r\nSTEP1.Send(_STEP1);\r\nSTEP2.Send(_STEP2);\r\nSTEP3.Send(_STEP3);\r\nSTEP4.Send(_STEP4);\r\nSTEP5.Send(_STEP5);\r\nSEQ.Send(_SEQ);",
@@ -370,19 +306,14 @@
                   "+": "TArduinoCustomCodeInputDigitalElement",
                   "InputPin": {
                     "SourcePin": {
-                      "ID": "__OpenWireRootUnit__.GP_BTN.OutputPin"
+                      "ID": "__OpenWireRootUnit__.PulseGenerator1.OutputPin"
                     }
                   }
                 },
                 {
                   "Name": "RST",
                   "OnData": "_RST = AValue;",
-                  "+": "TArduinoCustomCodeInputDigitalElement",
-                  "InputPin": {
-                    "SourcePin": {
-                      "ID": "__OpenWireRootUnit__.DELAY_500MS.OutputPin"
-                    }
-                  }
+                  "+": "TArduinoCustomCodeInputDigitalElement"
                 }
               ]
             },
@@ -443,9 +374,6 @@
                       {
                         "Name": "__OpenWireRootUnit__.PACK_DATA.Elements.Digital.InputPin",
                         "ID": "__OpenWireRootUnit__.PACK_DATA.Elements._Item5.InputPin"
-                      },
-                      {
-                        "ID": "__OpenWireRootUnit__.DELAY_500MS.InputPin"
                       }
                     ]
                   },
@@ -476,98 +404,40 @@
                   "+": "TArduinoCustomCodeOutputUnsignedElement"
                 }
               ]
-            }
+            },
+            "Defines": "\/\/***********************************************************\r\n\/\/\r\n\/\/  FUNCTION BLOCK - SEQ (Sequence)\r\n\/\/\r\n\/\/  written by - me@johnsawyers.com\r\n\/\/\r\n\/\/  license - Creative Common License CC-BY-NC\r\n\/\/\r\n\/\/  This function block(FB) provides a method to perform\r\n\/\/  sequential sequencing. \r\n\/\/\r\n\/\/  INPUTS\r\n\/\/\r\n\/\/  STEP (BOOL) - A rising signal on this input will advance\r\n\/\/                the block to the next step.\r\n\/\/\r\n\/\/                When STEP5 is active and the STEP input\r\n\/\/                is true, the block will advance to STEP0.\r\n\/\/\r\n\/\/\r\n\/\/  RST (BOOL)  - A rising signal on this input will set the\r\n\/\/                block to STEP0\r\n\/\/\r\n\/\/  OUTPUTS\r\n\/\/\r\n\/\/  STEPx (BOOL) - Indicates that STEPx is active.  Only one\r\n\/\/                 STEP output will be active at one time.\r\n\/\/\r\n\/\/  SEQ (UINT) - Indicates active STEP\r\n\/\/\r\n\/\/  NOTES:\r\n\/\/\r\n\/\/  (1) The clock input is not needed for this block to\r\n\/\/      function.\r\n\/\/\r\n\/\/***********************************************************"
           },
           "Type": "Component",
           "Y": 288
         },
         {
           "X": 256,
-          "Name": "DELAY_500MS",
+          "Name": "PulseGenerator1",
           "Instance": {
-            "InputPin": {
-              "SourcePin": {
-                "Name": "__OpenWireRootUnit__.RUDCAL_SEQ.Outputs.STEP4.OutputPin",
-                "ID": "__OpenWireRootUnit__.RUDCAL_SEQ.Outputs._Item4.OutputPin"
-              }
-            },
+            "Frequency": 0.100000001490116,
             "OutputPin": {
               "SinkPins": [
                 {
-                  "Name": "__OpenWireRootUnit__.RUDCAL_SEQ.Inputs.RST.InputPin",
-                  "ID": "__OpenWireRootUnit__.RUDCAL_SEQ.Inputs._Item1.InputPin"
+                  "Name": "__OpenWireRootUnit__.PACK_DATA.Elements.Digital.InputPin",
+                  "ID": "__OpenWireRootUnit__.PACK_DATA.Elements._Item0.InputPin"
+                },
+                {
+                  "Name": "__OpenWireRootUnit__.CAL_SEQ.Inputs.Digital.InputPin",
+                  "ID": "__OpenWireRootUnit__.CAL_SEQ.Inputs._Item0.InputPin"
                 }
               ]
             },
-            "+": "TArduinoOnOffDelay",
-            "OnInterval": 500000,
-            "OffInterval": 0
+            "+": "TArduinoPulseGenerator",
+            "Phase": 0.999755859375,
+            "Asymmetry": 0
           },
           "Type": "Component",
-          "Y": 352
-        }
-      ],
-      "Sub Graphs": [
-        {
-          "Name": "_Sub_Root_",
-          "*": [
-            {
-              "X": 256,
-              "Name": "RUD_SIM",
-              "Instance": {
-                "Properties": {
-                  "*": [
-                    {
-                      "Name": "Digital Output1",
-                      "+": "TVisuinoSubDiagramPropertyDigitalSink"
-                    },
-                    {
-                      "Name": "Analog Output1",
-                      "+": "TVisuinoSubDiagramPropertyAnalogSink"
-                    }
-                  ]
-                },
-                "+": "TVisuinoSubDiagram"
-              },
-              "Type": "Component",
-              "Y": 256
-            }
-          ],
-          "Type": "Diagram",
-          "Selection": [
-            "DELAY_500MS"
-          ]
-        },
-        {
-          "Name": "_Sub_Root_",
-          "*": [
-            {
-              "X": 256,
-              "Name": "RUD_CAL",
-              "Instance": {
-                "Properties": {
-                  "*": [
-                    {
-                      "Name": "GP_BTN",
-                      "+": "TVisuinoSubDiagramPropertyDigitalSource"
-                    }
-                  ]
-                },
-                "+": "TVisuinoSubDiagram"
-              },
-              "Type": "Component",
-              "Y": 256
-            }
-          ],
-          "Type": "Diagram",
-          "Selection": [
-            "DELAY_500MS"
-          ]
+          "Y": 320
         }
       ],
       "Type": "Diagram",
       "Selection": [
-        "DELAY_500MS"
+        "CAL_SEQ"
       ]
     }
   ]
